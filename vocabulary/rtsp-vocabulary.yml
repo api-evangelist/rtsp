@@ -1,0 +1,126 @@
+name: RTSP Vocabulary
+description: >-
+  Domain vocabulary for the Real-Time Streaming Protocol (RTSP), covering
+  protocol methods, session states, transport concepts, and related streaming
+  standards. Based on IETF RFC 7826 (RTSP 2.0) and RFC 2326 (RTSP 1.0).
+version: "2.0"
+created: "2026-05-02"
+modified: "2026-05-02"
+
+domains:
+  - name: Protocol Methods
+    description: RTSP request methods as defined in RFC 7826
+    terms:
+      - term: OPTIONS
+        definition: >-
+          Returns the methods available on the server or for a specific
+          resource. Used for capability discovery.
+      - term: DESCRIBE
+        definition: >-
+          Retrieves the description of a presentation or media object using
+          a URL. Returns SDP (Session Description Protocol) data.
+      - term: SETUP
+        definition: >-
+          Specifies the transport mechanism to be used for a stream and
+          initializes the session. Must be called before PLAY.
+      - term: PLAY
+        definition: >-
+          Instructs the server to start sending data via the mechanism
+          specified in SETUP. Begins media delivery.
+      - term: PAUSE
+        definition: >-
+          Temporarily halts stream delivery without releasing the session.
+          A subsequent PLAY resumes from the paused position.
+      - term: TEARDOWN
+        definition: >-
+          Terminates the session and releases all associated resources.
+          Equivalent to hanging up a call.
+      - term: RECORD
+        definition: >-
+          Initiates recording of a media stream. The server stores
+          the media for later retrieval.
+      - term: ANNOUNCE
+        definition: >-
+          Sends a description (SDP) of a presentation to the server,
+          typically used before RECORD.
+      - term: GET_PARAMETER
+        definition: >-
+          Retrieves the value of a parameter from a presentation or stream.
+          Often used as a session keepalive.
+      - term: SET_PARAMETER
+        definition: >-
+          Sets the value of a parameter on a presentation or stream.
+
+  - name: Session States
+    description: States in the RTSP session state machine
+    terms:
+      - term: Init
+        definition: >-
+          Initial state before SETUP. No session exists.
+      - term: Ready
+        definition: >-
+          State after a successful SETUP. Session exists but media
+          is not being delivered.
+      - term: Playing
+        definition: >-
+          State after a successful PLAY. Media data is being delivered
+          to the client.
+      - term: Recording
+        definition: >-
+          State after a successful RECORD. Client is sending media data
+          to the server.
+
+  - name: Transport Concepts
+    description: Media transport protocols and concepts used with RTSP
+    terms:
+      - term: RTP
+        definition: >-
+          Real-time Transport Protocol (RFC 3550). Used for carrying audio
+          and video data between endpoints. RTSP controls the RTP session
+          but does not carry media itself.
+      - term: RTCP
+        definition: >-
+          RTP Control Protocol. Runs alongside RTP to provide quality
+          feedback, synchronization, and participant identification.
+      - term: SDP
+        definition: >-
+          Session Description Protocol (RFC 4566). Used in DESCRIBE responses
+          to describe the media streams available (codecs, ports, etc.).
+      - term: Unicast
+        definition: >-
+          One-to-one media delivery from server to a single client.
+      - term: Multicast
+        definition: >-
+          One-to-many media delivery where a single stream is shared
+          across multiple clients on the network.
+      - term: Interleaved
+        definition: >-
+          A mode where RTP data is tunneled over the RTSP TCP connection
+          using the $ framing mechanism.
+
+  - name: URL Format
+    description: RTSP URL structure and conventions
+    terms:
+      - term: RTSP URL
+        definition: >-
+          URLs for RTSP resources use the rtsp:// scheme (port 554 default)
+          or rtsps:// for TLS-encrypted connections (port 322 default).
+          Example: rtsp://192.168.1.100:554/live/stream1
+      - term: Port 554
+        definition: >-
+          The default TCP port for RTSP connections, registered with IANA.
+      - term: Aggregate Control URL
+        definition: >-
+          A URL that represents a presentation with multiple streams
+          (audio + video), used in PLAY/PAUSE/TEARDOWN to control all
+          streams together.
+
+tags:
+  - Streaming
+  - Video
+  - Media
+  - Protocol
+  - IETF
+  - Real-Time
+  - IP Camera
+  - Surveillance

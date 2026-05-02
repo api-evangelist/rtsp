@@ -1,0 +1,45 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "rtsp": "https://datatracker.ietf.org/doc/html/rfc7826#section-",
+    "schema": "https://schema.org/",
+    "iana": "https://www.iana.org/assignments/rtsp-parameters/",
+
+    "Session": "rtsp:Session",
+    "Request": "rtsp:Request",
+    "Response": "rtsp:Response",
+
+    "sessionId": {
+      "@id": "rtsp:session-id",
+      "@type": "schema:Text"
+    },
+    "url": {
+      "@id": "schema:url",
+      "@type": "@id"
+    },
+    "state": {
+      "@id": "rtsp:session-state",
+      "@type": "schema:Text"
+    },
+    "method": {
+      "@id": "rtsp:method",
+      "@type": "schema:Text"
+    },
+    "statusCode": {
+      "@id": "rtsp:status-code",
+      "@type": "schema:Integer"
+    },
+    "transport": {
+      "@id": "rtsp:transport-header",
+      "@type": "schema:Text"
+    },
+    "sdp": {
+      "@id": "schema:contentUrl",
+      "@type": "schema:Text"
+    },
+    "timeout": {
+      "@id": "rtsp:session-timeout",
+      "@type": "schema:Integer"
+    }
+  }
+}

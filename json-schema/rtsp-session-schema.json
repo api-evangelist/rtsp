@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://datatracker.ietf.org/schemas/rtsp/session",
+  "title": "RTSP Session",
+  "description": "Represents an RTSP streaming session as defined by RFC 7826",
+  "type": "object",
+  "properties": {
+    "sessionId": {
+      "type": "string",
+      "description": "Unique session identifier assigned by the server (Session header value)"
+    },
+    "url": {
+      "type": "string",
+      "pattern": "^rtsp://",
+      "description": "RTSP URL for the stream (rtsp://host:port/path)"
+    },
+    "state": {
+      "type": "string",
+      "description": "Current session state",
+      "enum": ["Init", "Ready", "Playing", "Recording"]
+    },
+    "transport": {
+      "type": "string",
+      "description": "Transport specification (e.g., RTP/AVP;unicast;client_port=4588-4589)"
+    },
+    "serverPort": {
+      "type": "string",
+      "description": "Server RTP/RTCP port pair (e.g., 6256-6257)"
+    },
+    "clientPort": {
+      "type": "string",
+      "description": "Client RTP/RTCP port pair (e.g., 4588-4589)"
+    },
+    "timeout": {
+      "type": "integer",
+      "description": "Session timeout in seconds",
+      "minimum": 0
+    },
+    "sdp": {
+      "type": "string",
+      "description": "Session Description Protocol (SDP) content describing the media"
+    }
+  },
+  "required": ["sessionId", "url", "state"]
+}

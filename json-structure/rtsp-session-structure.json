@@ -1,0 +1,51 @@
+{
+  "title": "RTSP Protocol Data Structures",
+  "description": "JSON structure documentation for RTSP protocol concepts (RFC 7826)",
+  "version": "2.0",
+  "entities": {
+    "Session": {
+      "description": "An RTSP streaming session between client and server",
+      "fields": {
+        "sessionId": { "type": "string", "description": "Server-assigned session identifier", "required": true },
+        "url": { "type": "string", "description": "RTSP stream URL (rtsp://...)", "required": true },
+        "state": {
+          "type": "string",
+          "description": "State machine: Init | Ready | Playing | Recording",
+          "required": true
+        },
+        "transport": { "type": "string", "description": "Transport spec (RTP/AVP;unicast;client_port=...)" },
+        "timeout": { "type": "integer", "description": "Session keepalive timeout in seconds" },
+        "sdp": { "type": "string", "description": "SDP payload from DESCRIBE response" }
+      }
+    },
+    "Request": {
+      "description": "An RTSP request message",
+      "fields": {
+        "method": {
+          "type": "string",
+          "description": "RTSP method: OPTIONS | DESCRIBE | SETUP | PLAY | PAUSE | TEARDOWN | RECORD | ANNOUNCE | GET_PARAMETER | SET_PARAMETER",
+          "required": true
+        },
+        "url": { "type": "string", "description": "Request URI (rtsp:// URL or *)", "required": true },
+        "cseq": { "type": "integer", "description": "CSeq sequence number for matching responses", "required": true },
+        "session": { "type": "string", "description": "Session header value" },
+        "transport": { "type": "string", "description": "Transport header for SETUP requests" }
+      }
+    },
+    "Response": {
+      "description": "An RTSP response message",
+      "fields": {
+        "statusCode": {
+          "type": "integer",
+          "description": "Status code: 200 OK, 404 Not Found, 461 Unsupported Transport, etc.",
+          "required": true
+        },
+        "reasonPhrase": { "type": "string", "description": "Human-readable status description" },
+        "cseq": { "type": "integer", "description": "CSeq matching the request", "required": true },
+        "session": { "type": "string", "description": "Session ID (for stateful responses)" },
+        "contentType": { "type": "string", "description": "Content-Type of response body" },
+        "body": { "type": "string", "description": "Response body (SDP for DESCRIBE, etc.)" }
+      }
+    }
+  }
+}
