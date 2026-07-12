@@ -68,6 +68,8 @@ apis:
       - type: Documentation
         url: https://github.com/bluenviron/mediamtx
 common:
+  - type: DomainSecurity
+    url: security/rtsp-domain-security.yml
   - type: Specification
     url: https://datatracker.ietf.org/doc/html/rfc7826
   - type: Specification
