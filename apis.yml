@@ -74,6 +74,12 @@ apis:
       - Streaming
       - Video
       - IP Camera
+      - Open-Source
+      - MediaMTX
+    tags_raw:
+      - Streaming
+      - Video
+      - IP Camera
       - Open Source
       - MediaMTX
     properties:
