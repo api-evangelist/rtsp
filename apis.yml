@@ -97,6 +97,8 @@ apis:
       - type: Documentation
         url: https://github.com/bluenviron/mediamtx
 common:
+  - type: Website
+    url: https://www.ietf.org/
   - type: DomainSecurity
     url: security/rtsp-domain-security.yml
   - type: Specification
