@@ -85,7 +85,7 @@ apis:
       - Streaming
       - Video
       - IP Camera
-      - Open-Source
+      - Open Source
       - MediaMTX
     tags_raw:
       - Streaming
@@ -93,6 +93,7 @@ apis:
       - IP Camera
       - Open Source
       - MediaMTX
+      - Open-Source
     properties:
       - type: Documentation
         url: https://github.com/bluenviron/mediamtx
